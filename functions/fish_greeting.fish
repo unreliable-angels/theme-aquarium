@@ -1,15 +1,15 @@
-set -g fish_emojis
-set fish_emojis $fish_emojis 🐠
-set fish_emojis $fish_emojis 🐟
-set fish_emojis $fish_emojis 🐡
-set fish_emojis $fish_emojis 🐬
-set fish_emojis $fish_emojis 🐳
-set fish_emojis $fish_emojis 🐋
-set fish_emojis $fish_emojis 🦀
-set fish_emojis $fish_emojis 🐙
-set fish_emojis $fish_emojis 🐢
-
 function fish_greeting -d 'Show greeting in login shell'
+    set -l fish_emojis
+    set fish_emojis $fish_emojis 🐠
+    set fish_emojis $fish_emojis 🐟
+    set fish_emojis $fish_emojis 🐡
+    set fish_emojis $fish_emojis 🐬
+    set fish_emojis $fish_emojis 🐳
+    set fish_emojis $fish_emojis 🐋
+    set fish_emojis $fish_emojis 🦀
+    set fish_emojis $fish_emojis 🐙
+    set fish_emojis $fish_emojis 🐢
+
     if not set -q aquarium_nogreeting
         set -l line ''
         for fish_emoji in $fish_emojis

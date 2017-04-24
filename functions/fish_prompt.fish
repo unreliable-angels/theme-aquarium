@@ -45,6 +45,17 @@ function fish_prompt
 end
 
 function __random_fish_emoji
+    set -l fish_emojis
+    set fish_emojis $fish_emojis 🐠
+    set fish_emojis $fish_emojis 🐟
+    set fish_emojis $fish_emojis 🐡
+    set fish_emojis $fish_emojis 🐬
+    set fish_emojis $fish_emojis 🐳
+    set fish_emojis $fish_emojis 🐋
+    set fish_emojis $fish_emojis 🦀
+    set fish_emojis $fish_emojis 🐙
+    set fish_emojis $fish_emojis 🐢
+
     set -l index (math (math (random)%(count $fish_emojis))+1)
     echo $fish_emojis[$index]
 end
