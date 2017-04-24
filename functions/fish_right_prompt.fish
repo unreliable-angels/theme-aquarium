@@ -6,22 +6,38 @@ if not set -q aquarium_show_node_version
     set -g aquarium_show_node_version 'true'
 end
 
-function aquarium_toggle_ruby_version
-  if test $aquarium_show_ruby_version = 'true'
-      set aquarium_show_ruby_version 'false'
-  else
-      set aquarium_show_ruby_version 'true'
-  end
-  commandline -f repaint
+function aquarium_toggle_right_prompt -d 'Toggle right prompt of aquarium theme'
+    if not set -q aquarium_no_right_prompt
+        set -g aquarium_no_right_prompt 'false'
+    end
+
+    if test $aquarium_no_right_prompt = 'true'
+        set aquarium_no_right_prompt 'false'
+    else
+        set aquarium_no_right_prompt 'true'
+    end
+
+    commandline -f repaint
 end
 
-function aquarium_toggle_node_version
-  if test $aquarium_show_node_version = 'true'
-      set aquarium_show_node_version 'false'
-  else
-      set aquarium_show_node_version 'true'
-  end
-  commandline -f repaint
+function aquarium_toggle_ruby_version -d 'Toggle Ruby version on right prompt of aquarium theme'
+    if test $aquarium_show_ruby_version = 'true'
+        set aquarium_show_ruby_version 'false'
+    else
+        set aquarium_show_ruby_version 'true'
+    end
+
+    commandline -f repaint
+end
+
+function aquarium_toggle_node_version -d 'Toggle Node version on right prompt of aquarium theme'
+    if test $aquarium_show_node_version = 'true'
+        set aquarium_show_node_version 'false'
+    else
+        set aquarium_show_node_version 'true'
+    end
+
+    commandline -f repaint
 end
 
 function __aquarium_get_ruby_version

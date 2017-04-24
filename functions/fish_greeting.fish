@@ -24,6 +24,8 @@ function fish_greeting -d 'Show greeting in login shell'
         echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~
         echo
         echo 'Hint:'
+        echo (set_color blue)'*' Run (set_color brown)aquarium_toggle_right_prompt \
+             (set_color blue)if you want to toggle show/hide the right prompt.
         echo (set_color blue)'*' (set_color brown)set -g aquarium_nogreeting \'true\' \
              (set_color blue)if you want to disable this greeting message.
         echo (set_color blue)'*' (set_color brown)set -g aquarium_show_ruby_version \'false\' \
