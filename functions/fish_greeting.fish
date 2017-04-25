@@ -21,11 +21,11 @@ function fish_greeting -d 'Show greeting in login shell'
         end
         set_color cyan
         echo 'Aquarium Theme for fish'
-        echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         set_color -b cyan
         echo $line
         set_color -b normal
-        echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         echo
         echo 'Hint:'
         echo (set_color blue)'*' Run (set_color brown)aquarium_toggle_right_prompt \
