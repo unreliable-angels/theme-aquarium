@@ -34,6 +34,8 @@ function fish_greeting -d 'Show greeting in login shell'
              (set_color blue)if you want to disable this greeting message.
         echo (set_color blue)'*' (set_color brown)set -g aquarium_show_ruby_version \'false\' \
              (set_color blue)if you want to hide ruby version.
+        echo (set_color blue)'*' (set_color brown)set -g aquarium_show_python_version \'false\' \
+             (set_color blue)if you want to hide python version.
         echo (set_color blue)'*' (set_color brown)set -g aquarium_show_node_version \'false\' \
              (set_color blue)if you want to hide node version.
         echo (set_color blue)'*' (set_color brown)set -g aquarium_no_right_prompt \'true\' \
