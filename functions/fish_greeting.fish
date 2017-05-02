@@ -30,16 +30,14 @@ function fish_greeting -d 'Show greeting in login shell'
         echo 'Hint:'
         echo (set_color blue)'*' Run (set_color brown)aquarium_toggle_right_prompt \
              (set_color blue)if you want to toggle show/hide the right prompt.
+        echo (set_color blue)'*' Run (set_color brown)aquarium_toggle_ruby_version \
+             (set_color blue)if you want to toggle show/hide Ruby version.
+        echo (set_color blue)'*' Run (set_color brown)aquarium_toggle_python_version \
+             (set_color blue)if you want to toggle show/hide Python version.
+        echo (set_color blue)'*' Run (set_color brown)aquarium_toggle_node_version \
+             (set_color blue)if you want to toggle show/hide Node version.
         echo (set_color blue)'*' (set_color brown)set -g aquarium_nogreeting \'true\' \
              (set_color blue)if you want to disable this greeting message.
-        echo (set_color blue)'*' (set_color brown)set -g aquarium_show_ruby_version \'false\' \
-             (set_color blue)if you want to hide ruby version.
-        echo (set_color blue)'*' (set_color brown)set -g aquarium_show_python_version \'false\' \
-             (set_color blue)if you want to hide python version.
-        echo (set_color blue)'*' (set_color brown)set -g aquarium_show_node_version \'false\' \
-             (set_color blue)if you want to hide node version.
-        echo (set_color blue)'*' (set_color brown)set -g aquarium_no_right_prompt \'true\' \
-             (set_color blue)if you want to completely disable the right prompt.
         set_color normal
         echo
     end
