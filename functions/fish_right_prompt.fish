@@ -1,9 +1,5 @@
 function aquarium_toggle_right_prompt -d 'Toggle right prompt of aquarium theme'
-    if not set -q aquarium_no_right_prompt
-        set -U aquarium_no_right_prompt 'false'
-    end
-
-    if test $aquarium_no_right_prompt = 'true'
+    if test "$aquarium_no_right_prompt" = 'true'
         set aquarium_no_right_prompt 'false'
     else
         set aquarium_no_right_prompt 'true'
@@ -13,11 +9,7 @@ function aquarium_toggle_right_prompt -d 'Toggle right prompt of aquarium theme'
 end
 
 function aquarium_toggle_python_version -d 'Toggle Python version on right prompt of aquarium theme'
-    if not set -q aquarium_show_python_version
-        set -U aquarium_show_python_version 'true'
-    end
-
-    if test $aquarium_show_python_version = 'true'
+    if test "$aquarium_show_python_version" = 'true'
         set aquarium_show_python_version 'false'
     else
         set aquarium_show_python_version 'true'
@@ -27,11 +19,7 @@ function aquarium_toggle_python_version -d 'Toggle Python version on right promp
 end
 
 function aquarium_toggle_ruby_version -d 'Toggle Ruby version on right prompt of aquarium theme'
-    if not set -q aquarium_show_ruby_version
-        set -U aquarium_show_ruby_version 'true'
-    end
-
-    if test $aquarium_show_ruby_version = 'true'
+    if test "$aquarium_show_ruby_version" = 'true'
         set aquarium_show_ruby_version 'false'
     else
         set aquarium_show_ruby_version 'true'
@@ -41,11 +29,7 @@ function aquarium_toggle_ruby_version -d 'Toggle Ruby version on right prompt of
 end
 
 function aquarium_toggle_node_version -d 'Toggle Node version on right prompt of aquarium theme'
-    if not set -q aquarium_show_node_version
-        set -U aquarium_show_node_version 'true'
-    end
-
-    if test $aquarium_show_node_version = 'true'
+    if test "$aquarium_show_node_version" = 'true'
         set aquarium_show_node_version 'false'
     else
         set aquarium_show_node_version 'true'
@@ -55,7 +39,11 @@ function aquarium_toggle_node_version -d 'Toggle Node version on right prompt of
 end
 
 function __aquarium_get_ruby_version
-    if test $aquarium_show_ruby_version != 'true'
+    if not set -q aquarium_show_ruby_version
+        set -U aquarium_show_ruby_version 'true'
+    end
+
+    if test "$aquarium_show_ruby_version" != 'true'
         return
     end
 
@@ -73,7 +61,11 @@ function __aquarium_get_ruby_version
 end
 
 function __aquarium_get_python_version
-    if test $aquarium_show_python_version != 'true'
+    if not set -q aquarium_show_python_version
+        set -U aquarium_show_python_version 'true'
+    end
+
+    if test "$aquarium_show_python_version" != 'true'
         return
     end
 
@@ -91,7 +83,11 @@ function __aquarium_get_python_version
 end
 
 function __aquarium_get_node_version
-    if test $aquarium_show_node_version != 'true'
+    if not set -q aquarium_show_node_version
+        set -U aquarium_show_node_version 'true'
+    end
+
+    if test "$aquarium_show_node_version" != 'true'
         return
     end
 
@@ -114,6 +110,10 @@ function __aquarium_get_node_version
 end
 
 function fish_right_prompt
+    if not set -q aquarium_no_right_prompt
+        set -U aquarium_no_right_prompt 'false'
+    end
+
     if test "$aquarium_no_right_prompt" = 'true'
         return
     end
