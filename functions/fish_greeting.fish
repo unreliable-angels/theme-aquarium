@@ -36,6 +36,8 @@ function fish_greeting -d 'Show greeting in login shell'
              (set_color blue)if you want to toggle show/hide Python version.
         echo (set_color blue)'*' Run (set_color brown)aquarium_toggle_node_version \
              (set_color blue)if you want to toggle show/hide Node version.
+        echo (set_color blue)'*' Run (set_color brown)aquarium_toggle_emoji_decoration \
+             (set_color blue)if you want to toggle enable/disable emoji decoration.
         echo (set_color blue)'*' (set_color brown)set -U aquarium_nogreeting \'true\' \
              (set_color blue)if you want to disable this greeting message.
         set_color normal

@@ -1,8 +1,8 @@
 function aquarium_toggle_right_prompt -d 'Toggle right prompt of aquarium theme'
     if test "$aquarium_no_right_prompt" = 'true'
-        set aquarium_no_right_prompt 'false'
+        set -U aquarium_no_right_prompt 'false'
     else
-        set aquarium_no_right_prompt 'true'
+        set -U aquarium_no_right_prompt 'true'
     end
 
     commandline -f repaint
@@ -10,9 +10,9 @@ end
 
 function aquarium_toggle_python_version -d 'Toggle Python version on right prompt of aquarium theme'
     if test "$aquarium_show_python_version" = 'true'
-        set aquarium_show_python_version 'false'
+        set -U aquarium_show_python_version 'false'
     else
-        set aquarium_show_python_version 'true'
+        set -U aquarium_show_python_version 'true'
     end
 
     commandline -f repaint
@@ -20,9 +20,9 @@ end
 
 function aquarium_toggle_ruby_version -d 'Toggle Ruby version on right prompt of aquarium theme'
     if test "$aquarium_show_ruby_version" = 'true'
-        set aquarium_show_ruby_version 'false'
+        set -U aquarium_show_ruby_version 'false'
     else
-        set aquarium_show_ruby_version 'true'
+        set -U aquarium_show_ruby_version 'true'
     end
 
     commandline -f repaint
@@ -30,9 +30,9 @@ end
 
 function aquarium_toggle_node_version -d 'Toggle Node version on right prompt of aquarium theme'
     if test "$aquarium_show_node_version" = 'true'
-        set aquarium_show_node_version 'false'
+        set -U aquarium_show_node_version 'false'
     else
-        set aquarium_show_node_version 'true'
+        set -U aquarium_show_node_version 'true'
     end
 
     commandline -f repaint

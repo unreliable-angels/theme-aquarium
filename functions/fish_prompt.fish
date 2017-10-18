@@ -1,47 +1,71 @@
+function aquarium_toggle_emoji_decoration -d 'Toggle emoji decoration of aquarium theme'
+    if test "$aquarium_no_emoji_decoration" = 'true'
+        set -U aquarium_no_emoji_decoration 'false'
+    else
+        set -U aquarium_no_emoji_decoration 'true'
+    end
+
+    commandline -f repaint
+end
+
 function fish_prompt
-  set -l last_command_status $status
-  set -l cwd (prompt_pwd)
+    set -l last_command_status $status
+    set -l cwd (prompt_pwd)
 
-  # set -l fish     "⋊>"
-  set -l ahead    "↑"
-  set -l behind   "↓"
-  set -l diverged "⥄"
-  set -l dirty    "⨯"
-  set -l none     "◦"
+    set -l missing  '?'
+    set -l ahead    '↑'
+    set -l behind   '↓'
+    set -l diverged '⥄'
+    set -l dirty    '⨯'
+    set -l none     '◦'
 
-  set -l normal_color     (set_color normal)
-  set -l directory_color  (set_color brown)
-  set -l repository_color (set_color green)
-
-  if test $last_command_status -eq 0
-    echo -n -s (__random_fish_emoji) $normal_color " "
-  else
-    echo -n -s 👿 $normal_color " "
-  end
-
-  if __git_is_repo
-    if test "$theme_short_path" = 'yes'
-      set root_folder (command git rev-parse --show-toplevel ^/dev/null)
-      set parent_root_folder (dirname $root_folder)
-      set cwd (echo $PWD | sed -e "s|$parent_root_folder/||")
-
-      echo -n -s " " $directory_color $cwd $normal_color
-    else
-      echo -n -s " " $directory_color $cwd $normal_color
+    if test "$aquarium_no_emoji_decoration" = 'true'
+        # set missing  '?'
+        set ahead    '+'
+        set behind   '-'
+        set diverged '*'
+        set dirty    'x'
+        set none     'o'
     end
 
-    echo -n -s " on " $repository_color (__git_branch_name) $normal_color " "
+    set -l normal_color     (set_color normal)
+    set -l directory_color  (set_color brown)
+    set -l repository_color (set_color green)
 
-    if __git_is_touched
-      echo -n -s $dirty
+    if test "$aquarium_no_emoji_decoration" = 'true'
+        set_color cyan
+        echo -n -s '⋊>' $normal_color ' '
     else
-      echo -n -s (__git_ahead $ahead $behind $diverged $none)
+        if test $last_command_status -eq 0
+            echo -n -s (__random_fish_emoji) $normal_color '  '
+        else
+            echo -n -s 👿 $normal_color '  '
+        end
     end
-  else
-    echo -n -s " " $directory_color $cwd $normal_color
-  end
 
-  echo -n -s " "
+    if __git_is_repo
+        if test "$theme_short_path" = 'yes'
+            set root_folder (command git rev-parse --show-toplevel ^/dev/null)
+            set parent_root_folder (dirname $root_folder)
+            set cwd (echo $PWD | sed -e "s|$parent_root_folder/||")
+
+            echo -n -s $directory_color $cwd $normal_color
+        else
+            echo -n -s $directory_color $cwd $normal_color
+        end
+
+        echo -n -s ' on ' $repository_color (__git_branch_name) $normal_color ' '
+
+        if __git_is_touched
+            echo -n -s $dirty
+        else
+            echo -n -s (__git_ahead $missing $ahead $behind $diverged $none)
+        end
+    else
+        echo -n -s $directory_color $cwd $normal_color
+    end
+
+    echo -n -s ' '
 end
 
 function __random_fish_emoji
@@ -77,19 +101,20 @@ function __git_is_touched
     test -n (echo (command git status --porcelain))
 end
 
-function __git_ahead -a ahead behind diverged none
+function __git_ahead -a missing ahead behind diverged none
     set -l commit_count (command git rev-list --count --left-right "@{upstream}...HEAD" ^/dev/null)
 
     switch "$commit_count"
-    case ""
-      # no upstream
+    case ''
+        # no upstream
+        echo "$missing"
     case "0"\t"0"
-      test -n "$none"; and echo "$none"; or echo ""
+        echo "$none"
     case "*"\t"0"
-      test -n "$behind"; and echo "$behind"; or echo "-"
+        echo "$behind"
     case "0"\t"*"
-      test -n "$ahead"; and echo "$ahead"; or echo "+"
+        echo "$ahead"
     case "*"
-      test -n "$diverged"; and echo "$diverged"; or echo "±"
+        echo "$diverged"
     end
 end
