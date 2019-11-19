@@ -13,20 +13,11 @@ function fish_prompt
     set -l cwd (prompt_pwd)
 
     set -l missing  '?'
-    set -l ahead    '↑'
-    set -l behind   '↓'
-    set -l diverged '⥄'
-    set -l dirty    '⨯'
-    set -l none     '◦'
-
-    if test "$aquarium_no_emoji_decoration" = 'true'
-        # set missing  '?'
-        set ahead    '+'
-        set behind   '-'
-        set diverged '*'
-        set dirty    'x'
-        set none     'o'
-    end
+    set -l ahead    '+'
+    set -l behind   '-'
+    set -l diverged '*'
+    set -l dirty    'x'
+    set -l none     'o'
 
     set -l normal_color     (set_color normal)
     set -l directory_color  (set_color brown)
@@ -34,12 +25,16 @@ function fish_prompt
 
     if test "$aquarium_no_emoji_decoration" = 'true'
         set_color cyan
-        echo -n -s '⋊>' $normal_color ' '
+        if test $last_command_status -eq 0
+            echo -n -s '⋊>' $normal_color ' '
+        else
+            echo -n -s '><' $normal_color ' '
+        end
     else
         if test $last_command_status -eq 0
-            echo -n -s (__random_fish_emoji) $normal_color '  '
+            echo -n -s (__random_fish_emoji) $normal_color ' '
         else
-            echo -n -s 👿 $normal_color '  '
+            echo -n -s 🐜 $normal_color ' '
         end
     end
 
@@ -73,14 +68,15 @@ function __random_fish_emoji
     set fish_emojis $fish_emojis 🐠
     set fish_emojis $fish_emojis 🐟
     set fish_emojis $fish_emojis 🐡
+    set fish_emojis $fish_emojis 🦈
     set fish_emojis $fish_emojis 🐬
     set fish_emojis $fish_emojis 🐳
     set fish_emojis $fish_emojis 🐋
     set fish_emojis $fish_emojis 🦀
+    set fish_emojis $fish_emojis 🦐
+    set fish_emojis $fish_emojis 🦞
     set fish_emojis $fish_emojis 🐙
     set fish_emojis $fish_emojis 🦑
-    set fish_emojis $fish_emojis 🦀
-    set fish_emojis $fish_emojis 🦐
     set fish_emojis $fish_emojis 🐚
     set fish_emojis $fish_emojis 🐢
 

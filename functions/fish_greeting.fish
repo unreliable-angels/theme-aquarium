@@ -3,14 +3,15 @@ function fish_greeting -d 'Show greeting in login shell'
     set fish_emojis $fish_emojis 🐠
     set fish_emojis $fish_emojis 🐟
     set fish_emojis $fish_emojis 🐡
+    set fish_emojis $fish_emojis 🦈
     set fish_emojis $fish_emojis 🐬
     set fish_emojis $fish_emojis 🐳
     set fish_emojis $fish_emojis 🐋
     set fish_emojis $fish_emojis 🦀
+    set fish_emojis $fish_emojis 🦐
+    set fish_emojis $fish_emojis 🦞
     set fish_emojis $fish_emojis 🐙
     set fish_emojis $fish_emojis 🦑
-    set fish_emojis $fish_emojis 🦀
-    set fish_emojis $fish_emojis 🦐
     set fish_emojis $fish_emojis 🐚
     set fish_emojis $fish_emojis 🐢
 
