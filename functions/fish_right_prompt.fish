@@ -75,7 +75,7 @@ function __aquarium_get_python_version
     end
 
     if type python >/dev/null ^/dev/null
-        echo \((set_color yellow)python: (set_color normal)(python -V ^&1 | awk '{print $2}')\)
+        echo \((set_color yellow)python: (set_color normal)(python -V 2>&1 | awk '{print $2}')\)
         return
     end
 
