@@ -89,8 +89,8 @@ function __git_is_repo
 end
 
 function __git_branch_name
-    command git symbolic-ref --short HEAD2>/dev/null;
-        or command git show-ref --head -s --abbrev | head -n12>/dev/null
+    command git symbolic-ref --short HEAD 2>/dev/null;
+        or command git show-ref --head -s --abbrev | head -n1 2>/dev/null
 end
 
 function __git_is_touched
@@ -98,7 +98,7 @@ function __git_is_touched
 end
 
 function __git_ahead -a missing ahead behind diverged none
-    set -l commit_count (command git rev-list --count --left-right "@{upstream}...HEAD"2>/dev/null)
+    set -l commit_count (command git rev-list --count --left-right "@{upstream}...HEAD" 2>/dev/null)
 
     switch "$commit_count"
     case ''
