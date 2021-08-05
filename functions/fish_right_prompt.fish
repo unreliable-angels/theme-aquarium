@@ -47,12 +47,12 @@ function __aquarium_get_ruby_version
         return
     end
 
-    if type rbenv >/dev/null ^/dev/null
+    if type rbenv >/dev/null 2>&1
         echo \((set_color red)rbenv: (set_color normal)(rbenv version-name)\)
         return
     end
 
-    if type ruby >/dev/null ^/dev/null
+    if type ruby >/dev/null 2>&1
         echo \((set_color red)ruby: (set_color normal)(ruby -v)\)
         return
     end
@@ -69,12 +69,12 @@ function __aquarium_get_python_version
         return
     end
 
-    if type pyenv >/dev/null ^/dev/null
+    if type pyenv >/dev/null 2>&1
         echo \((set_color yellow)pyenv: (set_color normal)(pyenv version-name)\)
         return
     end
 
-    if type python >/dev/null ^/dev/null
+    if type python >/dev/null 2>&1
         echo \((set_color yellow)python: (set_color normal)(python -V 2>&1 | awk '{print $2}')\)
         return
     end
@@ -91,17 +91,17 @@ function __aquarium_get_node_version
         return
     end
 
-    if type fnm >/dev/null ^/dev/null
+    if type fnm >/dev/null 2>&1
         echo \((set_color green)fnm: (set_color normal)(node -v)\)
         return
     end
 
-    if type nodebrew >/dev/null ^/dev/null
+    if type nodebrew >/dev/null 2>&1
         echo \((set_color green)nodebrew: (set_color normal)(node -v)\)
         return
     end
 
-    if type node >/dev/null ^/dev/null
+    if type node >/dev/null 2>&1
         echo \((set_color green)node: (set_color normal)(node -v)\)
         return
     end

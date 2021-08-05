@@ -40,7 +40,7 @@ function fish_prompt
 
     if __git_is_repo
         if test "$theme_short_path" = 'yes'
-            set root_folder (command git rev-parse --show-toplevel ^/dev/null)
+            set root_folder (command git rev-parse --show-toplevel 2>/dev/null)
             set parent_root_folder (dirname $root_folder)
             set cwd (echo $PWD | sed -e "s|$parent_root_folder/||")
 
@@ -85,12 +85,12 @@ function __random_fish_emoji
 end
 
 function __git_is_repo
-    test -d .git; or command git rev-parse --git-dir >/dev/null ^/dev/null
+    test -d .git; or command git rev-parse --git-dir >/dev/null 2>&1
 end
 
 function __git_branch_name
-    command git symbolic-ref --short HEAD ^/dev/null;
-        or command git show-ref --head -s --abbrev | head -n1 ^/dev/null
+    command git symbolic-ref --short HEAD2>/dev/null;
+        or command git show-ref --head -s --abbrev | head -n12>/dev/null
 end
 
 function __git_is_touched
@@ -98,7 +98,7 @@ function __git_is_touched
 end
 
 function __git_ahead -a missing ahead behind diverged none
-    set -l commit_count (command git rev-list --count --left-right "@{upstream}...HEAD" ^/dev/null)
+    set -l commit_count (command git rev-list --count --left-right "@{upstream}...HEAD"2>/dev/null)
 
     switch "$commit_count"
     case ''
